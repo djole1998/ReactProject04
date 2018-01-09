@@ -1,7 +1,7 @@
 td {
     width: 30%;
-    padding-left: 250px;
-    padding-top: 100px;
+    margin-left: 250px;
+    padding-top: 75px;
     display: inline-block;
     font-size: 50px;
 }
@@ -9,4 +9,15 @@ td {
 div {
     height: 100%;
     background-color: #00aced;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    margin-left:350px;
+    margin-top:10px;
+    background-color: #00719c;
+    border: none;
+    color:white;
 }

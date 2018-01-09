@@ -39,9 +39,9 @@ class ContactsList extends Component {
         const contacts = this.state.filteredContacts;
         return(
             <div className={classes.div}>
-                <button onClick={this.renderMale.bind(this)}>Male</button>
-                <button onClick={this.renderFemale.bind(this)}>Female</button>
-                <button onClick={this.renderAll.bind(this)}>All</button>
+                <button className={classes.button} onClick={this.renderMale.bind(this)}>MALE</button>
+                <button className={classes.button} onClick={this.renderFemale.bind(this)}>FEMALE</button>
+                <button className={classes.button} onClick={this.renderAll.bind(this)}>ALL</button>
                 <tr className={classes.ul}>
                     {contacts.map((contact) => {
                         return <Contact contact={contact} key={contact.id}/>
