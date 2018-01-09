@@ -1,0 +1,10 @@
+td {
+    width: 30%;
+    padding-left: 250px;
+    padding-top: 100px;
+    display: inline-block;
+    font-size: 50px;
+}
+tr{
+    background: linear-gradient(50deg, blue, red);
+}

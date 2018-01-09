@@ -1,0 +1,13 @@
+header{
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(150deg, red, blue);
+    color:white;
+    text-align: center;
+
+}
+h1{
+    margin:0;
+    padding-top: 35px;
+    font-size: 100px;
+}
