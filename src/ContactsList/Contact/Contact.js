@@ -3,12 +3,13 @@ import classes from './Contact.css';
 
 class Contact extends React.Component{
     render(){
+        const {first_name, last_name, email, gender} = this.props.contact;
         return (
             <td className={classes.li}>
-                    First Name: {this.props.contact.first_name}<br/>
-                    Last Name: {this.props.contact.last_name}<br/>
-                    Email: {this.props.contact.email}<br/>
-                    Gender: {this.props.contact.gender}
+                    First Name: {first_name}<br/>
+                    Last Name: {last_name}<br/>
+                    Email: {email}<br/>
+                    Gender: {gender}
             </td>
         );
     }

@@ -5,6 +5,8 @@ td {
     display: inline-block;
     font-size: 50px;
 }
-tr{
-    background: linear-gradient(50deg, blue, red);
+
+div {
+    height: 100%;
+    background-color: #00aced;
 }
