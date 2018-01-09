@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import ContactsList from './ContactsList/ContactsList';
 import Header from './header/Header';
@@ -34,22 +34,23 @@ const contacts = [{
 }];
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-        contacts: contacts
+    constructor() {
+        super();
+        this.state = {
+            contacts: contacts
+        }
     }
-  }
-  render() {
-    return (
-      <div >
-        <Header />
-        <ContactsList
-        contacts={this.state.contacts}
-        />
-      </div>
-    );
-  }
+
+    render() {
+        return (
+            <div>
+                <Header/>
+                <ContactsList
+                    contacts={this.state.contacts}
+                />
+            </div>
+        );
+    }
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import Contact from './Contact/Contact';
 import classes from './Contact/Contact.css';
 
@@ -6,26 +6,25 @@ class ContactsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filteredContacts: props.contacts
+            filteredContacts: props.contacts,
         }
     }
 
-    renderFunction (e){
+    renderFunction(e) {
         const filtered = this.props.contacts.filter((contact) => {
-            if (e === 'Male'){
+            if (e === 'Male') {
                 return contact.gender === 'Male';
-            } else if (e === 'Female'){
+            } else if (e === 'Female') {
                 return contact.gender === 'Female';
-            } else if (e === 'All'){
+            } else {
                 return contact.gender;
             }
         });
         this.setState({
-            filteredContacts: filtered
+            filteredContacts: filtered,
         });
         console.log(filtered);
     }
-
 
     // renderMale() {
     //     const filtered = this.props.contacts.filter((contact) => {
@@ -52,14 +51,15 @@ class ContactsList extends Component {
     // };
 
 
-    render(){
+    render() {
+
         const contacts = this.state.filteredContacts;
-        return(
+        return (
             <div className={classes.div}>
                 <button className={classes.button} onClick={this.renderFunction.bind(this, 'Male')}>MALE</button>
                 <button className={classes.button} onClick={this.renderFunction.bind(this, 'Female')}>FEMALE</button>
                 <button className={classes.button} onClick={this.renderFunction.bind(this, 'All')}>ALL</button>
-                <tr className={classes.ul}>
+                <tr  className={classes.ul}>
                     {contacts.map((contact) => {
                         return <Contact contact={contact} key={contact.id}/>
                     })}
