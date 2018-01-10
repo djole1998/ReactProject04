@@ -1,5 +1,5 @@
 body {
-    font-family: "Courier New";
+    font-family: "Courier New", sans-serif;
 
 }
 td {
@@ -16,14 +16,14 @@ div {
 }
 
 button{
-    font-family: "Courier New";
+    font-family: "Courier New", sans-serif;
     width: 150px;
     height: 50px;
-    font-size: 25px;
     margin-left:350px;
     margin-top:10px;
     background-color: #00719c;
     border: none;
     color:white;
     border-radius: 25px;
+    font-size: x-large;
 }

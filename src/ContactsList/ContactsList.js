@@ -6,7 +6,7 @@ class ContactsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filteredContacts: props.contacts,
+            filteredContacts: [],
         }
     }
 
