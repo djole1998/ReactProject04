@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Contact from './Contact/Contact';
-import {classes} from './Contact/Contact.css';
+import './Contact/Contact.css';
 
 
 class ContactsList extends Component {
@@ -11,14 +11,10 @@ class ContactsList extends Component {
             search: '',
             isDisabled: true,
         };
-        // const firstName = document.getElementById('name').value;
-        // const lastName = document.getElementById('lastName').value;
-        // const email = document.getElementById('email').value;
-        // const gender = document.getElementById('gender').value;
     }
 
     showUsers(e) {
-        const filtered = this.props.contacts.filter((contact) => {
+        const filtered = this.props.contacts.filter(contact => {
             if (e === 'Male') {
                 return contact.gender === 'Male';
             } else if (e === 'Female') {
@@ -27,13 +23,15 @@ class ContactsList extends Component {
                 return contact.gender;
             }
         });
+
         this.setState({
             filteredContacts: filtered,
             isDisabled: false
         });
+        console.log(this.state.filteredContacts);
     }
 
-    searchContacts(event) {
+    searchUsers(event) {
         this.setState({
             search: event.target.value
         })
@@ -71,6 +69,20 @@ class ContactsList extends Component {
     //     })
     // };
 
+    removeUser(contact){
+        console.log(contact.id);
+    //     const users = this.state.filteredContacts;
+    //     for(let i = 0; i < users.length; i++){
+    //         if(users[i] === contact.id){
+    //             users.splice(i,1);
+    //     }
+    // }
+    //     this.setState({
+    //     })
+    }
+
+
+
     submitForm(event) {
         this.props.contacts.push({
             "id": Math.random() * 10,
@@ -81,16 +93,12 @@ class ContactsList extends Component {
         });
         event.preventDefault();
         this.showUsers();
-        console.log(this.props.contacts);
     }
 
     render() {
-
-        const searchedContacts = this.state.filteredContacts.filter(contact => {
-            let searchName = contact.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+        const searchedUsers = this.state.filteredContacts.filter(contact => {
+            return contact.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
             //let searchEmail = contact.email.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
-            return searchName;
-
         });
         return (
             <div>
@@ -107,17 +115,18 @@ class ContactsList extends Component {
                 </form>
                 <div className='search'>
                     <label>Search:</label><input value={this.state.search}
-                                                 onChange={this.searchContacts.bind(this)}
+                                                 onChange={this.searchUsers.bind(this)}
                                                  disabled={this.state.isDisabled}/>
                 </div>
                 <div>
                     <button style={{background: "red"}} onClick={this.resetUsers.bind(this)}>Reset</button>
                     <button onClick={this.showUsers.bind(this, 'Male')}>MALE</button>
                     <button onClick={this.showUsers.bind(this, 'Female')}>FEMALE</button>
-                    <button onClick={this.showUsers.bind(this, 'All')}>ALL</button>
+                    <button onClick={this.showUsers.bind(this)}>ALL</button>
                 </div>
                 <p>
-                    {searchedContacts.map(contact => <Contact contact={contact} key={contact.id}/>
+                    {searchedUsers.map(contact => <Contact removeUser={this.removeUser} contact={contact}
+                                                              key={contact.id}/>
                     )}
                 </p>
             </div>
