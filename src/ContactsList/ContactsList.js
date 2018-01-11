@@ -11,6 +11,8 @@ class ContactsList extends Component {
             search: '',
             isDisabled: true,
         };
+
+        this.removeUser = this.removeUser.bind(this);
     }
 
     showUsers(e) {
@@ -28,7 +30,6 @@ class ContactsList extends Component {
             filteredContacts: filtered,
             isDisabled: false
         });
-        console.log(this.state.filteredContacts);
     }
 
     searchUsers(event) {
@@ -70,18 +71,18 @@ class ContactsList extends Component {
     // };
 
     removeUser(contact){
-        console.log(contact.id);
+        this.setState({
+           filteredContacts: this.state.filteredContacts.filter(filteredContact => filteredContact.id !== contact.id)
+        });
     //     const users = this.state.filteredContacts;
     //     for(let i = 0; i < users.length; i++){
     //         if(users[i] === contact.id){
     //             users.splice(i,1);
-    //     }
-    // }
+    //          }
+    //      }
     //     this.setState({
     //     })
     }
-
-
 
     submitForm(event) {
         this.props.contacts.push({
@@ -91,8 +92,10 @@ class ContactsList extends Component {
             "email": event.target[2].value,
             "gender": event.target[3].value
         });
+
         event.preventDefault();
         this.showUsers();
+
     }
 
     render() {
@@ -124,11 +127,12 @@ class ContactsList extends Component {
                     <button onClick={this.showUsers.bind(this, 'Female')}>FEMALE</button>
                     <button onClick={this.showUsers.bind(this)}>ALL</button>
                 </div>
-                <p>
-                    {searchedUsers.map(contact => <Contact removeUser={this.removeUser} contact={contact}
-                                                              key={contact.id}/>
+
+                    {searchedUsers.map(contact => <Contact removeUser={this.removeUser}
+                                                           contact={contact}
+                                                           key={contact.id}/>
                     )}
-                </p>
+
             </div>
         );
     }

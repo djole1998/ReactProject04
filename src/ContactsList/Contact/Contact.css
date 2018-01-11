@@ -3,7 +3,7 @@ body {
     background-color: #00aced;
 }
 
-td {
+.userDiv {
     width: 30%;
     margin-left: 250px;
     display: inline-block;
@@ -48,7 +48,7 @@ button{
 }
 .removeButton {
     width: 80px;
-    height: 20px;
+    height: 40px;
     font-size: 15px;
-    margin-left: 10px;
+    margin:10px;
 }
