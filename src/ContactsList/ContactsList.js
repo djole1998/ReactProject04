@@ -55,7 +55,7 @@ class ContactsList extends Component {
 
         const contacts = this.state.filteredContacts;
         return (
-            <div className={classes.div}>
+            <div className="nesto">
                 <button className={classes.button} onClick={this.renderFunction.bind(this, 'Male')}>MALE</button>
                 <button className={classes.button} onClick={this.renderFunction.bind(this, 'Female')}>FEMALE</button>
                 <button className={classes.button} onClick={this.renderFunction.bind(this, 'All')}>ALL</button>
