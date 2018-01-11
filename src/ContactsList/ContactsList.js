@@ -73,7 +73,7 @@ class ContactsList extends Component {
 
     submitForm(event) {
         this.props.contacts.push({
-            "id": Math.random(),
+            "id": Math.random() * 10,
             "first_name": event.target[0].value,
             "last_name": event.target[1].value,
             "email": event.target[2].value,
@@ -81,6 +81,7 @@ class ContactsList extends Component {
         });
         event.preventDefault();
         this.showUsers();
+        console.log(this.props.contacts);
     }
 
     render() {
@@ -94,10 +95,10 @@ class ContactsList extends Component {
         return (
             <div>
                 <form className="addUserForm" onSubmit={this.submitForm.bind(this)}>
-                    <label>First Name</label><input id='name' type='text' placeholder='First Name'/>
-                    <label>Last Name</label><input id='lastName' type='text' placeholder='Last Name'/>
-                    <label>Email</label><input id='email' type='email' placeholder='Email'/>
-                    <label>Gender</label>
+                    <label>First Name:</label><input id='name' type='text' placeholder='First Name' required/>
+                    <label>Last Name:</label><input id='lastName' type='text' placeholder='Last Name' required/>
+                    <label>Email:</label><input id='email' type='email' placeholder='Email' required/>
+                    <label>Gender:</label>
                     <select>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
