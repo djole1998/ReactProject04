@@ -1,29 +1,35 @@
 body {
     font-family: "Courier New", sans-serif;
-
+    background-color: #00aced;
 }
+
 td {
     width: 30%;
     margin-left: 250px;
-    padding-top: 75px;
     display: inline-block;
     font-size: 45px;
-}
-
-div {
-    height: 850px;
-    background-color: #00aced;
+    padding-top:40px;
 }
 
 button{
     font-family: "Courier New", sans-serif;
     width: 150px;
     height: 50px;
-    margin-left:350px;
-    margin-top:10px;
+    margin-left:250px;
     background-color: #00719c;
     border: none;
     color:white;
     border-radius: 25px;
     font-size: x-large;
+}
+.search {
+    padding: 10px;
+    text-align: center;
+}
+.search label {
+    padding:20px;
+    font-size: 20px;
+}
+.search input {
+    height: 20px;
 }

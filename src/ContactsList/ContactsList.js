@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import Contact from './Contact/Contact';
-import classes from './Contact/Contact.css';
+import {classes} from './Contact/Contact.css';
 
 class ContactsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             filteredContacts: [],
+            search: '',
+            isDisabled: true
         }
     }
 
-    renderFunction(e) {
+    showUsers(e) {
         const filtered = this.props.contacts.filter((contact) => {
             if (e === 'Male') {
                 return contact.gender === 'Male';
@@ -22,8 +24,22 @@ class ContactsList extends Component {
         });
         this.setState({
             filteredContacts: filtered,
+            isDisabled: false
         });
-        console.log(filtered);
+    }
+
+    searchContacts(event) {
+        this.setState({
+            search: event.target.value
+        })
+    }
+
+    resetUsers() {
+        this.setState({
+            filteredContacts: [],
+            search: '',
+            isDisabled: true
+        })
     }
 
     // renderMale() {
@@ -50,20 +66,29 @@ class ContactsList extends Component {
     //     })
     // };
 
-
     render() {
-
-        const contacts = this.state.filteredContacts;
+        const searchedContacts = this.state.filteredContacts.filter(contact => {
+            let name = contact.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+            let email = contact.email.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+            return name, email;
+        });
         return (
-            <div className="nesto">
-                <button className={classes.button} onClick={this.renderFunction.bind(this, 'Male')}>MALE</button>
-                <button className={classes.button} onClick={this.renderFunction.bind(this, 'Female')}>FEMALE</button>
-                <button className={classes.button} onClick={this.renderFunction.bind(this, 'All')}>ALL</button>
-                <tr  className={classes.ul}>
-                    {contacts.map((contact) => {
-                        return <Contact contact={contact} key={contact.id}/>
-                    })}
-                </tr>
+            <div>
+                <div className='search'>
+                    <label>Search:</label><input value={this.state.search}
+                                                 onChange={this.searchContacts.bind(this)}
+                                                 disabled={this.state.isDisabled}/>
+                </div>
+                <div>
+                    <button style={{background: "red"}} onClick={this.resetUsers.bind(this)}>Reset</button>
+                    <button onClick={this.showUsers.bind(this, 'Male')}>MALE</button>
+                    <button onClick={this.showUsers.bind(this, 'Female')}>FEMALE</button>
+                    <button onClick={this.showUsers.bind(this, 'All')}>ALL</button>
+                </div>
+                <p>
+                    {searchedContacts.map(contact => <Contact contact={contact} key={contact.id}/>
+                    )}
+                </p>
             </div>
         );
     }
